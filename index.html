@@ -1,83 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  <link rel="stylesheet" href="./assets/stylesheet.css">
+  <link rel="stylesheet" href="./assets/style.css">
   <title>Event Planner</title>
 </head>
+
 <body>
-<div class="container is-fluid">
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class=navbar-start>
-    <div class="navbar-brand">
-      <a class="navbar-item" href="#">
-        <h1>Event Planner</h1>
-      </a>
-    </div>
-  </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary" id = "find-me" class="button"><strong>Get My Zipcode For Me</strong>
-            </a>
-            <div class="field has-addons">
-              <div class="control">
-                <input class="input" type="text" placeholder="Manually Input Zipcode" id="manualZipcode" value="">
-              </div>
-              <div class="control">
-                <a class="button is-info" id=searchbutton>
-                  Search
-                </a>
-              </div>
-            </div>
-          </div>
+  <div class="container is-fluid">
+ <!-- <nav class="navbar is-transparent">
+
+    <h1 class="title is-2">Event Planner</h1>-->
+    
+  </nav>
+
+  <br>
+  <div class="container is-fluid">
+
+  <br>
+
+    <section class="hero is-info">
+      <div class="hero-body">
+        <p class="title">
+          Event Planner
+        </p>
+        <p class="subtitle">
+          -something about what this website does-
+        </p>
+
+        <a class="button is-primary is-pulled-right" id="find-me" class="button"><strong>Get My Zipcode For Me</strong></a>
+        <br>
+        <br>
+            <div class="field has-addons is-pulled-right">
+            <div class="control">
+          <input class="input" type="text" placeholder="Manually Input Zipcode" id="manualZipcode" value="">
+            </div>  
+        <div class="control">
+          <a class="button is-primary" id=searchbutton>
+            Search 
+          </a>
+        </div>
+        </div>
+       
+    </section>
+
+    <br>
+
+    <div class="columns">
+      <div class="column is-half">
+        <div class="box-title">
+          <h1 class="title has-text-centered">Restaurants Near You</h1>
+        </div>
+        <br>
+        <div class="box" id="restaurant-results">
+          <!--results come from js-->
+        </div>
+      </div>
+ 
+
+      <div class="column is-half">
+        <div class="box-title">
+          <h1 class="title has-text-centered">Events Near You</h1>
+        </div>
+        <br>
+        <!-- <button type="button" id = "find-me" class="button">Find Me</button><br/> -->
+
+        <!-- <p id="status"></p>
+          <a id="map-link" target="_blank"></a>
+          Zipcode: <input type="text" id="zipcode" value="" placeholder="12345" />
+
+          <button type="button" id="find-me" class="button" onclick="myFunction()">Search</button><br />
+          <div id="response-container"></div> -->
+        <div class="box" id="event-results">
+          <!-- results come from js-->
         </div>
       </div>
     </div>
-  </nav>
-<br>
-<div class="columns">
-  <div class="column is-half">
-<div class="box">
-  <h1>Create a fetch request to the Ticketmaster/Zomato API!</h1>
-  <h2>Open the console to see the response!</h2>
-</div>
-<div class="box">
   </div>
-</div>
+
+  </div>
 
 
-  <div class="column is-half">
-<div class="box">
-  <p>Find events based on your location!</p>
-  
-  <!-- <button type="button" id = "find-me" class="button">Find Me</button><br/> -->
 
-  <p id = "status"></p>
-  <a id = "map-link" target="_blank"></a>
-    Zipcode: <input type="text" id="zipcode" value="" placeholder="12345" />
-    
-    <button type="button" id = "find-me" class="button" onclick="myFunction()">Search</button><br/>
-    <div id="response-container"></div>
-</div>
-<div class="box">
-</div>
-</div>
-</div>
-
-</div>
-
-  
-<!--      -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script src="./assets/js/draftscript.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
-    
-    
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+  <script src="./assets/js/draftscript.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 
 </body>
-</html>git 
+</html>

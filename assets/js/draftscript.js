@@ -1,24 +1,18 @@
 geo = navigator.geolocation;
-//set default to los angeles
-let latitude = "118.2437";
-let longitude = "34.0522";
+let latitude = "";
+let longitude = "";
 let zipcode = "";
 let cityName = "";
-const yelpAPIKey = "wgwBHXXCmjfhA8POZxL1enAYiNxFkZaMNuU6dS69ZcDhreiKa8ML6ozNE4iRMt-FSnJ_1NIksvaGTV8231srY2uYwa4kW-Y21BbJA8CcpHlsXhPoTCs_7gNK6VAWYHYx"
 let restaurantResult = document.querySelector("#restaurant-results");
 let eventResult = document.querySelector("#event-results")
-
+const yelpAPIKey = "wgwBHXXCmjfhA8POZxL1enAYiNxFkZaMNuU6dS69ZcDhreiKa8ML6ozNE4iRMt-FSnJ_1NIksvaGTV8231srY2uYwa4kW-Y21BbJA8CcpHlsXhPoTCs_7gNK6VAWYHYx";
 //grabs zip from local storage
 var storedZip = localStorage.getItem("saveZip");
 document.getElementById("manualZipcode").value = storedZip;
 
+//find lat long through viewers device (if supported)
 function geoFindMe() {
 
-    //const status = document.querySelector("#status");
-    //const mapLink = document.querySelector("#map-link");
-
-    //mapLink.href = "";
-    //mapLink.textContent = "";
     function success(position) {
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
@@ -44,23 +38,17 @@ function geoFindMe() {
         navigator.geolocation.getCurrentPosition(success, error);
     }
 }
+
+//function to call zomato and yelp, to create a list of 5 results each 
 function apiCall(lat, long) {
-    //gets zipcode based on lat/long
     //zomato api call start
     fetch(`https://developers.zomato.com/api/v2.1/geocode?lat=${lat}&lon=${long}&apikey=dbd02e4423c6033a5250e6d333cec9d8`)
-
-
         //api key for zomato: dbd02e4423c6033a5250e6d333cec9d8 || 6d8b3a7303ea9f77b8f54dac5bc623c3 || 7547a7eff7513a3f9a5f6096095ec8e9
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data)
-            console.log(
-                //"Zipcode = " + data.nearby_restaurants[0].restaurant.location.zipcode
-            );
-            //zipcode = data.nearby_restaurants[0].restaurant.location.zipcode;
-            //document.getElementById("zipcode").setAttribute("value", zipcode);
+            //console.log(data)
             //setup for showing restaurants
             for (let i = 0; i < 5; i++) {
                 let tempName = data.nearby_restaurants[i].restaurant.name;
@@ -72,10 +60,6 @@ function apiCall(lat, long) {
                 for (let i = 0; i < tempCost; i++) {
                     tempPrice = tempPrice + "$";
                 }
-                let tempNum = i + 1
-                console.log("Restaurant " + tempNum + ":" + tempName);
-                console.log("For more info visit Zomato Website: " + tempURL)
-
                 //create break
                 let breakEl = document.createElement("br");
                 //create container 
@@ -95,7 +79,7 @@ function apiCall(lat, long) {
                 //info for content
                 let contentInfoEl = document.createElement("div");
                 contentInfoEl.classList = "content";
-                contentInfoEl.innerHTML = "Cuisine Type: " + tempCuisine + "<br/>Cost: " + tempPrice + "<br/>Address: " + tempAddress;
+                contentInfoEl.innerHTML = "Cuisine Type: ".bold() + tempCuisine + "<br/>Cost: ".bold() + tempPrice + "<br/>Address: ".bold() + tempAddress;
                 contentEl.appendChild(contentInfoEl);
                 //link for content
                 let urlEl = document.createElement("a");
@@ -113,7 +97,6 @@ function apiCall(lat, long) {
                 //append card to box
                 restaurantResult.appendChild(breakEl);
                 restaurantResult.appendChild(resultsEl);
-
             }
         });
     //zomato api call end
@@ -130,12 +113,11 @@ function apiCall(lat, long) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             //setup for showing events
             for (let i = 0; i < data.events.length; i++) {
                 let tempName = data.events[i].name
                 let tempURL = data.events[i].event_site_url
-                let tempNum = i + 1;
                 let tempCategory = data.events[i].category;
                 let tempCost = data.events[i].is_free; //
                 let tempFree =""
@@ -145,10 +127,6 @@ function apiCall(lat, long) {
                     tempFree = "Event is not free(click below for more info)"
                 }
                 let tempAddress = data.events[i].location.display_address[0] + "," + data.events[i].location.display_address[1]
-
-                console.log("Event " + tempNum + ":" + tempName);
-                console.log("For more info visit Yelp Website: " + tempURL)
-
                 //create break
                 let breakEl = document.createElement("br");
                 //create container 
@@ -168,7 +146,7 @@ function apiCall(lat, long) {
                 //info for content
                 let contentInfoEl = document.createElement("div");
                 contentInfoEl.classList = "content";
-                contentInfoEl.innerHTML = "Category: " + tempCategory + "<br/>" + tempFree + "<br/>Address: " + tempAddress;
+                contentInfoEl.innerHTML = "Category: ".bold() + tempCategory + "<br/>Price: ".bold() + tempFree + "<br/>Address: ".bold() + tempAddress;
                 contentEl.appendChild(contentInfoEl);
                 //link for content
                 let urlEl = document.createElement("a");
@@ -191,6 +169,7 @@ function apiCall(lat, long) {
     //yelp api call end
 }
 
+//function when the search button is clicked it will save the zipcode then go to reversegeo()
 function getzip(events) {
     console.log(events)
     zipcode = document.querySelector("#manualZipcode").value
@@ -201,6 +180,7 @@ function getzip(events) {
     localStorage.setItem("saveZip", zipSave);
 }
 
+//function to convert the zipcode to latlong then goes through the apiCall()
 function reverseGeo(zipcode) {
     fetch(`http://open.mapquestapi.com/geocoding/v1/address?key=bND6GyuaB7NQRDxRazZuJ5Z96jjtaYvP&location=${zipcode}`)
         .then(function (response) {
@@ -213,19 +193,8 @@ function reverseGeo(zipcode) {
             let long = data.results[0].locations[0].latLng.lng
             console.log(lat + " " + long)
             apiCall(lat, long);
-
         })
 }
-
-
-
-
-
-
-
-
-
-
 
 document.querySelector("#find-me").addEventListener("click", geoFindMe);
 document.querySelector("#searchbutton").addEventListener("click", getzip)
@@ -235,26 +204,3 @@ document.querySelector("#manualZipcode").addEventListener("keyup", function (eve
         document.getElementById("searchbutton").click();
     }
 })
-
-/*if (document.querySelector("#find-me").addEventListener("click", geoFindMe) === true)
-{
-  geoFindMe()
-}
-else
-{
-
-}document.querySelector("#").addEventListener("click", geoFindMe);
-
-
-var manualZip = document.getElementById("zipcode").value
-
-fetch(`https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/YpNbCK0l1DyBXzPFfBhIxz2yTUtyiEXhp6SRPNuRbpYqpYcN6pTU4WIy8FzJMtgm/info.json/${manualZip}/degrees`)
-      //api key for Zip to location: YpNbCK0l1DyBXzPFfBhIxz2yTUtyiEXhp6SRPNuRbpYqpYcN6pTU4WIy8FzJMtgm
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data)
-      {
-        console.log(data)
-      })
-*/
