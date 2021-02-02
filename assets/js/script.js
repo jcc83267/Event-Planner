@@ -127,7 +127,6 @@ function reverseGeo(zipcode){
 
 
 document.querySelector("#find-me").addEventListener("click", geoFindMe);
-document.querySelector("#find-me").addEventListener("click", geoFindMe);
 document.querySelector("#searchbutton").addEventListener("click", getzip)
 /*if (document.querySelector("#find-me").addEventListener("click", geoFindMe) === true)
 {
