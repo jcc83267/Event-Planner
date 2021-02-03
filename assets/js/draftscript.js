@@ -70,7 +70,7 @@ function apiCall(lat, long) {
                 headerEl.classList = "card-header";
                 //title for header
                 let titleEl = document.createElement("p");
-                titleEl.classList = "card-header-title";
+                titleEl.classList = "card-header-title has-background-link-light";
                 titleEl.innerHTML = tempName;
                 headerEl.appendChild(titleEl);
                 //created the content of the container
@@ -137,7 +137,7 @@ function apiCall(lat, long) {
                 headerEl.classList = "card-header";
                 //title for header
                 let titleEl = document.createElement("p");
-                titleEl.classList = "card-header-title";
+                titleEl.classList = "card-header-title has-background-link-light";
                 titleEl.innerHTML = tempName;
                 headerEl.appendChild(titleEl);
                 //created the content of the container
