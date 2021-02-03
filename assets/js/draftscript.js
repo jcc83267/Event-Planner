@@ -16,7 +16,7 @@ function geoFindMe() {
     function success(position) {
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
-        fetch(`http://open.mapquestapi.com/geocoding/v1/reverse?key=bND6GyuaB7NQRDxRazZuJ5Z96jjtaYvP&location=${latitude},${longitude}&includeRoadMetadata=true&includeNearestIntersection=true`)
+        fetch(`https://open.mapquestapi.com/geocoding/v1/reverse?key=bND6GyuaB7NQRDxRazZuJ5Z96jjtaYvP&location=${latitude},${longitude}&includeRoadMetadata=true&includeNearestIntersection=true`)
             .then(function (response) {
                 return response.json();
             })
@@ -182,7 +182,7 @@ function getzip(events) {
 
 //function to convert the zipcode to latlong then goes through the apiCall()
 function reverseGeo(zipcode) {
-    fetch(`http://open.mapquestapi.com/geocoding/v1/address?key=bND6GyuaB7NQRDxRazZuJ5Z96jjtaYvP&location=${zipcode}`)
+    fetch(`https://open.mapquestapi.com/geocoding/v1/address?key=bND6GyuaB7NQRDxRazZuJ5Z96jjtaYvP&location=${zipcode}`)
         .then(function (response) {
             return response.json();
         })
