@@ -11,79 +11,60 @@
 
 <body>
   <div class="container is-fluid">
- <!-- <nav class="navbar is-transparent">
-
-    <h1 class="title is-2">Event Planner</h1>-->
-    
-  </nav>
-
-  <br>
-  <div class="container is-fluid">
-
-  <br>
-
-    <section class="hero is-info">
-      <div class="hero-body">
-        <p class="title">
-          Event Planner
-        </p>
-        <p class="subtitle">
-          -something about what this website does-
-        </p>
-
-        <a class="button is-primary is-pulled-right" id="find-me" class="button"><strong>Get My Zipcode For Me</strong></a>
-        <br>
-        <br>
-            <div class="field has-addons is-pulled-right">
-            <div class="control">
-          <input class="input" type="text" placeholder="Manually Input Zipcode" id="manualZipcode" value="">
-            </div>  
-        <div class="control">
-          <a class="button is-primary" id=searchbutton>
-            Search 
-          </a>
-        </div>
-        </div>
-       
-    </section>
-
     <br>
+    <div class="container is-fluid">
+      <br>
 
-    <div class="columns">
-      <div class="column is-half">
-        <div class="box-title">
-          <h1 class="title has-text-centered">Restaurants Near You</h1>
+      <section class="hero is-info is-medium is-flex-mobile">
+        <div class="hero-body ">
+          <p class="title is-size-2 has-text-black-bis pl-6 has-text-weight-bold">
+            Event Planner
+          </p>
+          <p class="subtitle has-text-black-bis pl-6 has-text-weight-semibold">
+            Planning made simple! Easily find restaurants and events nearby the chosen location.
+          </p>
+          <a class="button is-dark is-pulled-right mr-6" id="find-me" class="button">
+            <strong>Get My Zipcode For Me</strong>
+          </a>
+          <br>
+          <br>
+          <div class="field has-addons is-pulled-right 	pr-6">
+            <div class="control">
+              <input class="input" type="text" placeholder="Manually Input Zipcode" id="manualZipcode" value="">
+            </div>
+            <div class="control">
+              <a class="button is-dark" id=searchbutton>
+                Search
+              </a>
+            </div>
+          </div>
+      </section>
+
+      <br>
+
+      <div class="columns">
+        <div class="column is-half">
+          <div class="box-title">
+            <h1 class="title has-text-centered">Restaurants Near You</h1>
+          </div>
+          <br>
+          <div class="box" id="restaurant-results">
+            <!--results come from js-->
+          </div>
         </div>
-        <br>
-        <div class="box is-invisible" id="restaurant-results">
-          <!--results come from js-->
-        </div>
-      </div>
- 
 
-      <div class="column is-half">
-        <div class="box-title">
-          <h1 class="title has-text-centered">Events Near You</h1>
-        </div>
-        <br>
-        <!-- <button type="button" id = "find-me" class="button">Find Me</button><br/> -->
-
-        <!-- <p id="status"></p>
-          <a id="map-link" target="_blank"></a>
-          Zipcode: <input type="text" id="zipcode" value="" placeholder="12345" />
-
-          <button type="button" id="find-me" class="button" onclick="myFunction()">Search</button><br />
-          <div id="response-container"></div> -->
-        <div class="box is-invisible" id="event-results">
-          <!-- results come from js-->
+        <div class="column is-half">
+          <div class="box-title">
+            <h1 class="title has-text-centered">Events Near You</h1>
+          </div>
+          <br>
+          <div class="box" id="event-results">
+            <!-- results come from js-->
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  </div>
-
-
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
@@ -92,4 +73,5 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 
 </body>
+
 </html>
