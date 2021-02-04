@@ -4,7 +4,7 @@ let longitude = "";
 let zipcode = "";
 let cityName = "";
 let restaurantResult = document.querySelector("#restaurant-results");
-let eventResult = document.querySelector("#event-results")
+let eventResult = document.querySelector("#event-results");
 const yelpAPIKey = "wgwBHXXCmjfhA8POZxL1enAYiNxFkZaMNuU6dS69ZcDhreiKa8ML6ozNE4iRMt-FSnJ_1NIksvaGTV8231srY2uYwa4kW-Y21BbJA8CcpHlsXhPoTCs_7gNK6VAWYHYx";
 //grabs zip from local storage
 var storedZip = localStorage.getItem("saveZip");
@@ -21,9 +21,9 @@ function geoFindMe() {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data)
+                //console.log(data)
                 zipcode = data.results[0].locations[0].postalCode;
-                console.log(zipcode)
+                //console.log(zipcode)
                 document.getElementById("manualZipcode").value = zipcode;
                 //apiCall(latitude, longitude);
             })
@@ -41,6 +41,12 @@ function geoFindMe() {
 
 //function to call zomato and yelp, to create a list of 5 results each 
 function apiCall(lat, long) {
+    //clear result for both submit
+    restaurantResult.innerHTML = "";
+    eventResult.innerHTML = "";
+    //clear result for both submit
+    
+
     //zomato api call start
     fetch(`https://developers.zomato.com/api/v2.1/geocode?lat=${lat}&lon=${long}&apikey=dbd02e4423c6033a5250e6d333cec9d8`)
         //api key for zomato: dbd02e4423c6033a5250e6d333cec9d8 || 6d8b3a7303ea9f77b8f54dac5bc623c3 || 7547a7eff7513a3f9a5f6096095ec8e9
@@ -70,7 +76,7 @@ function apiCall(lat, long) {
                 headerEl.classList = "card-header";
                 //title for header
                 let titleEl = document.createElement("p");
-                titleEl.classList = "card-header-title";
+                titleEl.classList = "card-header-title has-background-link-light";
                 titleEl.innerHTML = tempName;
                 headerEl.appendChild(titleEl);
                 //created the content of the container
@@ -137,7 +143,7 @@ function apiCall(lat, long) {
                 headerEl.classList = "card-header";
                 //title for header
                 let titleEl = document.createElement("p");
-                titleEl.classList = "card-header-title";
+                titleEl.classList = "card-header-title has-background-link-light";
                 titleEl.innerHTML = tempName;
                 headerEl.appendChild(titleEl);
                 //created the content of the container
@@ -171,7 +177,7 @@ function apiCall(lat, long) {
 
 //function when the search button is clicked it will save the zipcode then go to reversegeo()
 function getzip(events) {
-    console.log(events)
+    //console.log(events)
     zipcode = document.querySelector("#manualZipcode").value
     reverseGeo(zipcode)
 
@@ -187,11 +193,10 @@ function reverseGeo(zipcode) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data)
-            console.log(data)
+            //console.log(data)
             let lat = data.results[0].locations[0].latLng.lat
             let long = data.results[0].locations[0].latLng.lng
-            console.log(lat + " " + long)
+            //console.log(lat + " " + long)
             apiCall(lat, long);
         })
 }
