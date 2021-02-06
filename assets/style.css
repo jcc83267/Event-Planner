@@ -5,3 +5,38 @@
     background-position: center;
 }
 
+.button {
+ margin-right: 3em;
+}
+
+p.title {
+    margin: -20px 0px 24px;
+    padding: 0px 0px 0px 40px; 
+}
+p.subtitle {
+    padding-left: 2em; 
+}
+
+@media screen and (max-width: 650px) {
+    .hero {
+        background-image: none;
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: gray;
+    }
+.button {
+    margin-right: 0em; 
+    
+}
+}
+
+@media screen and (max-width: 420px) {
+p.title {
+    padding-left: 0em; 
+}
+p.subtitle {
+    padding-left:0em; 
+}
+}
+
