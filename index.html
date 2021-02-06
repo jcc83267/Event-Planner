@@ -10,12 +10,33 @@
 </head>
 
 <body>
-  <div class="container is-fluid">
-    <br>
+
     <div class="container is-fluid">
       <br>
+<navbar class="is-hidden-tablet is-flex-touch">
+  <navbar-start>
+    Event Planner
+  </navbar-start>
+  <navbar-end>
+    <a class="button is-dark" id="find-me" class="button">
+      <strong>Get My Zipcode For Me</strong>
+    </a>
+    <br>
+    <br>
+    <div class="field has-addons">
+      <div class="control">
+        <input class="input" type="text" placeholder="Manually Input Zipcode" id="manualZipcode" value="">
+      </div>
+      <div class="control">
+        <a class="button is-dark" id=searchbutton>
+          Search
+        </a>
+      </div>
+    </div>
+  </navbar-end>
+</navbar>
 
-      <section class="hero is-info is-medium is-flex-mobile">
+      <section class="hero is-info is-medium is-hidden-mobile">
         <div class="hero-body ">
           <p class="title is-size-2 has-text-black-bis pl-6 has-text-weight-bold">
             Event Planner
@@ -64,7 +85,6 @@
         </div>
       </div>
     </div>
-  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
