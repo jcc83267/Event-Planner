@@ -2,13 +2,18 @@ geo = navigator.geolocation;
 let latitude = "";
 let longitude = "";
 let zipcode = "";
+let zipcodeMobile ="";
 let cityName = "";
 let restaurantResult = document.querySelector("#restaurant-results");
 let eventResult = document.querySelector("#event-results");
+let restaurantResultMobile = document.querySelector("#restaurant-results-mobile");
+let eventResultMobile = document.querySelector("#event-results-mobile");
 const yelpAPIKey = "wgwBHXXCmjfhA8POZxL1enAYiNxFkZaMNuU6dS69ZcDhreiKa8ML6ozNE4iRMt-FSnJ_1NIksvaGTV8231srY2uYwa4kW-Y21BbJA8CcpHlsXhPoTCs_7gNK6VAWYHYx";
 //grabs zip from local storage
 var storedZip = localStorage.getItem("saveZip");
 document.getElementById("manualZipcode").value = storedZip;
+var storedZip = localStorage.getItem("saveZipMobile");
+document.getElementById("manualZipcode-mobile").value = storedZip;
 
 //find lat long through viewers device (if supported)
 function geoFindMe() {
@@ -23,8 +28,10 @@ function geoFindMe() {
             .then(function (data) {
                 //console.log(data)
                 zipcode = data.results[0].locations[0].postalCode;
+                zipcodeMobile = zipcode
                 //console.log(zipcode)
                 document.getElementById("manualZipcode").value = zipcode;
+                document.getElementById("manualZipcode-mobile").value = zipcodeMobile;
                 //apiCall(latitude, longitude);
             })
     }
@@ -42,7 +49,7 @@ function geoFindMe() {
 //function to call zomato and yelp, to create a list of 5 results each 
 function apiCall(lat, long) {
     //clear result for both submit
-    restaurantResult.innerHTML = "";
+    restaurantResult.innerHTML = ""; 
     eventResult.innerHTML = "";
     //clear result for both submit
     
@@ -103,6 +110,8 @@ function apiCall(lat, long) {
                 //append card to box
                 restaurantResult.appendChild(breakEl);
                 restaurantResult.appendChild(resultsEl);
+                restaurantResultMobile.appendChild(breakEl);
+                restaurantResultMobile.appendChild(resultsEl);
             }
         });
     //zomato api call end
@@ -170,6 +179,9 @@ function apiCall(lat, long) {
                 //append card to box
                 eventResult.appendChild(breakEl);
                 eventResult.appendChild(resultsEl);
+                eventResultMobile.appendChild(breakEl);
+                eventResultMobile.appendChild(resultsEl);
+                
             }
         });
     //yelp api call end
@@ -179,11 +191,14 @@ function apiCall(lat, long) {
 function getzip(events) {
     //console.log(events)
     zipcode = document.querySelector("#manualZipcode").value
+    zipcodeMobile = document.querySelector("#manualZipcode-mobile").value
     reverseGeo(zipcode)
 
     //stores zip to localstorage
     var zipSave = document.getElementById("manualZipcode").value;
     localStorage.setItem("saveZip", zipSave);
+    var zipSaveMobile = document.getElementById("manualZipcode-mobile").value;
+    localStorage.setItem("saveZipMobile", zipSaveMobile);
 }
 
 //function to convert the zipcode to latlong then goes through the apiCall()
@@ -207,5 +222,13 @@ document.querySelector("#manualZipcode").addEventListener("keyup", function (eve
     if (event.keyCode === 13) {
         event.preventDefault();
         document.getElementById("searchbutton").click();
+    }
+})
+document.querySelector("#find-me-mobile").addEventListener("click", geoFindMe);
+document.querySelector("#searchbutton-mobile").addEventListener("click", getzip)
+document.querySelector("#manualZipcode-mobile").addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("searchbutton-mobile").click();
     }
 })

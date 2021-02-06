@@ -14,55 +14,109 @@
     <br>
     <div class="container is-fluid">
       <br>
+      <!--for screens bigger than 1023px start-->
 
-      <section class="hero is-info is-medium is-flex-mobile">
-        <div class="hero-body ">
-          <p class="title is-size-2 has-text-black-bis pl-6 has-text-weight-bold">
-            Event Planner
-          </p>
-          <p class="subtitle has-text-black-bis pl-6 has-text-weight-semibold">
-            Planning made simple! Easily find restaurants and events nearby the chosen location.
-          </p>
-          <a class="button is-dark is-pulled-right mr-6" id="find-me" class="button">
-            <strong>Get My Zipcode For Me</strong>
-          </a>
-          <br>
-          <br>
-          <div class="field has-addons is-pulled-right 	pr-6">
-            <div class="control">
-              <input class="input" type="text" placeholder="Manually Input Zipcode" id="manualZipcode" value="">
+        <section class="hero is-info is-medium is-flex-desktop is-hidden-touch">
+          <div class="hero-body ">
+            <p class="title is-size-2 has-text-black-bis pl-6 has-text-weight-bold">
+              Event Planner
+            </p>
+            <p class="subtitle has-text-black-bis pl-6 has-text-weight-semibold">
+              Planning made simple! Easily find restaurants and events nearby the chosen location.
+            </p>
+            <a class="button is-dark is-pulled-right mr-6" id="find-me" class="button">
+              <strong>Get My Zipcode For Me</strong>
+            </a>
+            <br>
+            <br>
+            <div class="field has-addons is-pulled-right 	pr-6">
+              <div class="control">
+                <input class="input" type="text" placeholder="Manually Input Zipcode" id="manualZipcode" value="">
+              </div>
+              <div class="control">
+                <a class="button is-dark" id=searchbutton>
+                  Search
+                </a>
+              </div>
             </div>
-            <div class="control">
-              <a class="button is-dark" id=searchbutton>
-                Search
-              </a>
+        </section>
+
+        <br class="is-flex-desktop is-hidden-touch">
+
+        <div class="columns is-flex-desktop is-hidden-touch">
+          <div class="column is-half">
+            <div class="box-title">
+              <h1 class="title has-text-centered">Restaurants Near You</h1>
+            </div>
+            <br>
+            <div class="box" id="restaurant-results">
+              <!--results come from js-->
             </div>
           </div>
+
+          <div class="column is-half">
+            <div class="box-title">
+              <h1 class="title has-text-centered">Events Near You</h1>
+            </div>
+            <br>
+            <div class="box" id="event-results">
+              <!-- results come from js-->
+            </div>
+          </div>
+        </div>
+      
+      <!--for screens bigger than 1023px end-->
+
+      <!--for screens smaller than 1023px start-->
+      <nav class="navbar is-flex-touch is-hidden-desktop" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <p class="navbar-item is-size-2">Event Planner</p>
+        </div>
+      </nav>
+      <div>
+          <p class="navbar-item is-size-6">Planning Made Easy</p>
+        </div>
+      <section class="hero is-small is-info is-flex-touch is-hidden-desktop">
+        <div>
+          <a class="button is-dark" id="find-me-mobile" class="button">
+            <strong>Get My Zipcode</strong>
+          </a>
+        </div>
+        <div class="field has-addons">
+          <div class="control">
+            <input class="input" type="text" placeholder="Manually Input Zipcode" id="manualZipcode-mobile" value="">
+          </div>
+          <div class="control">
+            <a class="button is-dark" id=searchbutton-mobile>
+              Search
+            </a>
+          </div>
+        </div>
       </section>
+      <br class="is-flex-touch is-hidden-desktop">
 
-      <br>
-
-      <div class="columns">
-        <div class="column is-half">
+      
+        <div class="is-hidden-desktop">
           <div class="box-title">
             <h1 class="title has-text-centered">Restaurants Near You</h1>
           </div>
           <br>
-          <div class="box" id="restaurant-results">
+          <div class="box" id="restaurant-results-mobile">
             <!--results come from js-->
           </div>
         </div>
 
-        <div class="column is-half">
+        <div class="is-hidden-desktop">
           <div class="box-title">
             <h1 class="title has-text-centered">Events Near You</h1>
           </div>
           <br>
-          <div class="box" id="event-results">
+          <div class="box" id="event-results-mobile">
             <!-- results come from js-->
           </div>
         </div>
-      </div>
+      <!--for screens smaller than 1023px end-->
+      
     </div>
   </div>
 
