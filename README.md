@@ -11,7 +11,10 @@ Pulling two API's this website allows the user to search nearby restaurants and 
 * JQUERY 
 
 ## Website Preview
-![screenshotofwebsite](https://user-images.githubusercontent.com/74436613/107134482-5502b500-68a7-11eb-8188-d99f37839a0a.png)
+![screenshotofwebsite](./assets/screenshot1.png)
+## 
+![screenshotofwebsite](./assets/screenshot2.png)
+
 
 ## Contributions by
 James Canlas, Ellen Cho, and David Fan
